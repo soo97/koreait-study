@@ -13,5 +13,4 @@
     - git merge --abort를 작성하여 merge를 취소하거나
       필요한 코드만을 남겨두고 커밋하여 해결
 
-개발자A가 코드를 작성중
 ddddd dev 수정
