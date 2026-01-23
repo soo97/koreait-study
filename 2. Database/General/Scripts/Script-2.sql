@@ -50,3 +50,12 @@ WHERE first_name LIKE '_di';
 
 SELECT * FROM employees
 WHERE first_name LIKE 'G__';
+
+SELECT * FROM titles
+WHERE to_date IS NULL;
+
+SELECT * FROM titles
+WHERE to_date IS NOT NULL;
+
+SELECT * FROM departments
+WHERE dept_no IN ('d005','d009');

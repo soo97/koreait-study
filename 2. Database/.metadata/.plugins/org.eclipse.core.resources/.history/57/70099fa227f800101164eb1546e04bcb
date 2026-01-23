@@ -1,0 +1,6 @@
+-- 사번, 이름, 연봉 조회
+SELECT 
+from employees e
+JOIN salaries s
+ON e.emp_no = s.emp_no
+WHERE s.to_date = "9999-01-01";

@@ -1,0 +1,2 @@
+-- 사번, 이름, 연봉 조회
+SELECT from employees;

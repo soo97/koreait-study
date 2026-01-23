@@ -1,0 +1,60 @@
+-- Q1. salaries 테이블에서 급여에 1000을 더한 값을 조회하세요.
+SELECT salary + 1000 FROM salaries ;
+-- Q2. salaries 테이블에서 급여에서 세금 10%를 뺀 실수령액을 조회하세요.
+SELECT salary * 0.9 FROM salaries;
+-- Q3. salaries 테이블에서 연봉을 월급으로 계산하여 조회하세요.
+SELECT salary * 12 FROM salaries;
+-- Q4. employees 테이블에서 성별 목록을 중복 없이 조회하세요.
+SELECT * FROM employees
+WHERE gender ;
+-- Q5. titles 테이블에서 직급 목록을 중복 없이 조회하세요.
+SELECT * FROM titles
+WHERE title ='';
+-- Q6. employees 테이블에서 사번이 10006인 사원을 조회하세요.
+SELECT * FROM employees
+
+-- Q7. salaries 테이블에서 급여가 60000 이상인 사원을 조회하세요.
+-- 
+-- Q8. employees 테이블에서 입사일이 1995년 이후인 사원을 조회하세요.
+-- 
+-- Q9. employees 테이블에서 성별이 F인 사원을 조회하세요.
+-- 
+-- Q10. dept_emp 테이블에서 부서 번호가 d005인 사원을 조회하세요.
+-- 
+-- Q11. salaries 테이블에서 급여가 60000 이상이고 80000 이하인 사원을 조회하세요.
+-- 
+-- Q12. employees 테이블에서 성별이 M이거나 입사일이 1990년 이전인 사원을 조회하세요.
+-- 
+-- Q14. dept_emp 테이블에서 부서가 d001이고 현재 재직 중인 사원을 조회하세요.
+-- 
+-- Q15. salaries 테이블에서 급여가 40000 미만이거나 100000 초과인 사원을 조회하세요.
+-- 
+-- Q16. employees 테이블에서 성별이 F이면서 1995년 이후 입사한 사원을 조회하세요.
+-- 
+-- Q17. salaries 테이블에서 급여가 50000부터 70000 사이인 사원을 조회하세요.
+-- 
+-- Q18. employees 테이블에서 입사일이 1990년부터 1995년 사이인 사원을 조회하세요.
+-- 
+-- Q19. employees 테이블에서 사번이 10010부터 10020 사이인 사원을 조회하세요.
+-- 
+-- Q20. salaries 테이블에서 급여가 80000 이상 100000 이하인 사원을 조회하세요.
+-- 
+-- Q21. dept_emp 테이블에서 부서 번호가 d003부터 d006 사이인 사원을 조회하세요.
+-- 
+-- Q22. employees 테이블에서 이름이 A로 시작하는 사원을 조회하세요.
+-- 
+-- Q23. employees 테이블에서 이름이 n으로 끝나는 사원을 조회하세요.
+-- 
+-- Q24. employees 테이블에서 이름에 'an'이 포함된 사원을 조회하세요.
+-- 
+-- Q25. employees 테이블에서 이름이 5글자인 사원을 조회하세요.
+-- 
+-- Q26. employees 테이블에서 성(last_name)에 'son'이 포함된 사원을 조회하세요.
+-- 
+-- Q27. titles 테이블에서 to_date가 NULL인 데이터를 조회하세요.
+-- 
+-- Q28. dept_emp 테이블에서 부서가 d001, d003, d005인 사원을 조회하세요.
+-- 
+-- Q29. employees 테이블에서 사번이 10001, 10005, 10010인 사원을 조회하세요.
+-- 
+-- Q30. departments 테이블에서 부서명이 Sales 또는 Development인 부서를 조회하세요.
