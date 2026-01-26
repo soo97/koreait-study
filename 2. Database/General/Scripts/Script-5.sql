@@ -51,3 +51,36 @@ FROM salaries s
 WHERE salary in (SELECT salary FROM salaries ORDER BY salary DESC) ;
 
 SELECT salary FROM salaries ORDER BY salary DESC;
+
+
+SELECT * FROM salaries s  WHERE (emp_no, salary) IN (SELECT emp_no, max(salary) from salaries GROUP BY emp_no;
+
+SELECT emp_no,title, to_date FROM titles WHERE (emp_no,to_date) IN (SELECT emp_no, max(to_date) FROM titles GROUP BY emp_no);
+
+SELECT emp_no, salary, to_date FROM salaries
+WHERE (emp_no, TO_date) IN (SELECT emp_no, max(to_date) FROM salaries GROUP BY emp_no ); 
+
+SELECT * FROM dept_emp;
+SELECT emp_no, dept_no, from_date FROM dept_emp
+WHERE (emp_no, from_date) IN (SELECT emp_no, min(from_date)FROM dept_emp GROUP BY emp_no);
+
+
+SELECT *
+FROM ( SELECT de.dept_no, avg(s.salary) FROM dept_emp de JOIN salaries s ON de.emp_no = s.emp_no GROUP BY de.dept_no) a;
+
+
+SELECT *
+from(SELECT emp_no, salary, salary*1.1 AS increment_salary FROM salaries order BY increment_salary DESC LIMIT 3)a
+WHERE increment_salary >= 170000;
+
+-- dept_no, 평균 연봉(salary)을 조회 (인라인뷰)
+-- 메인쿼리에서 평균 연봉이 70000 이상인 부서만 조회
+SELECT *
+FROM (SELECT dept_no, avg(salary) AS avg_salary FROM dept_emp de JOIN salaries s ON de.emp_no = s.emp_no GROUP BY dept_no) t
+WHERE avg_salary >= 70000;
+
+SELECT *
+FROM (SELECT emp_no, avg(salary) AS 평균연봉 FROM salaries s GROUP BY emp_no) t
+WHERE 평균연봉 >= 80000;
+
+ ;
