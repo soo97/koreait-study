@@ -1,9 +1,0 @@
-CREATE TABLE db_tc1(
-	id varchar(50)
-);
-
-INSERT INTO db_tc1 values('test1');
-INSERT INTO db_tc1 values('test2');
-INSERT INTO db_tc1 values('test3');
-
-SELECT * FROM db_tc1;

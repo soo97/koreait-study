@@ -1,1 +1,0 @@
-SELECT eㅡp_no, salary / 12 AS '월급' FROM salaries;
