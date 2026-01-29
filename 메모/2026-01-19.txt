@@ -1,0 +1,5 @@
+오전 9:29 2026-01-19
+cmd ->ctrl+shift+Enter ->DISM.exe /Online /Cleanup-image /Restorehealth
+
+오전 9:51 2026-01-19
+react 쪽 화살표 함수 많이 사용

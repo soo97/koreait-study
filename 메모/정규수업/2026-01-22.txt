@@ -1,0 +1,5 @@
+오전 9:37 2026-01-22
+mysql-dbearber
+
+
+redis, mongoDB - 이 두가지를 많이 씀

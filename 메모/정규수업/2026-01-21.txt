@@ -1,0 +1,22 @@
+오전 9:57 2026-01-21
+git add .
+git commit -m "...."
+git 행동 origin 브랜치
+git push origin master
+git pull origin master
+
+
+---------------------------------------------------
+오전 10:09 2026-01-21
+pull 땡길때 충돌이 많이 일어남
+
+git push -f origin master //강제 올리기
+
+
+dbeaber
+Driver properties -> allowpublickKeyRetrieval (true)
+
+오후 3:01 2026-01-21
+sysdm.cpl
+
+cmd[mysql -u root -p] -> [use employees;] ->

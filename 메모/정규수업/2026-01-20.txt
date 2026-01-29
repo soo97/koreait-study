@@ -1,0 +1,24 @@
+오후 12:07 2026-01-20
+https://koritic.maniaro.kr/student
+
+root 도메인 관리 서버 13개
+
+네트워크+시스템 = 클라우드
+
+오후 1:56 2026-01-20
+클라우드 : AWS,GCP, Azure, NCP, Oracle[CSP]
+클라우드 대행 업체(MSP업체): 메가존, 베스핀글로벌, GS네오텍[국내 3대장]
+오후 2:12 2026-01-20
+mk dir - make directory
+rm dir - remove directory
+echo - 해당하는 파일에 글자 생성
+
+
+오후 3:23 2026-01-20
+vscode - git 연결
+git-cmd.exe ->  [git config --global user.name "soo97"] -> [git config --global user.email "syjk7503@gmail.com"] -> [git config --list] ->
+vscode.exe ->terminal [git innit]->terminal(bash로변경)->파일 생성 및 텍스트 ->[git remote add origin (깃허브주소)] ->[git commit -m "첫번째 히스토리"] ->[git push origin master]
+
+
+오후 5:29 2026-01-20
+리눅스단축키 - ctrl+c = 강제종료
