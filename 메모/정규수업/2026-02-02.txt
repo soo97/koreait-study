@@ -1,0 +1,16 @@
+오전 10:01 2026-02-02
+git.bash
+$ git config --global user.name "hyun"
+$ git config --global user.email "syjk7503@gmail.com"
+$ git config --list
+$ cd /c/study
+$ git init .
+$ git remote add origin https://github.com/soo97/koreait-study.git
+$ git clone https://github.com/soo97/koreait-study.git  ->처음 세팅시 clone으로 땡겨옴
+
+sysdm.cpl
+고급 - 환경변수 - path - 편집 - 새로만들기 - mysql bin 경로 - 확인
+
+이클립스 워크스페이스
+import projects - general -worlk space - browse - javaStudy 
+안될경우 - file -switch workspace - study
