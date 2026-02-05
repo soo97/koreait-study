@@ -21,6 +21,7 @@ public class Ex26_Main {
 								메뉴 :
 								""");
 			int menu = sc.nextInt();
+			sc.nextLine();
 			
 			switch(menu) {
 			case 1 -> book.add(list);

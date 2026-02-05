@@ -22,22 +22,25 @@ public class Ex26_1_Book {
 		String author = sc.nextLine();
 		
 		list.add(new Ex26_1_BookInfo(title, author));
+		System.out.println("도서가 추가되었습니다.");
 	}
 	
 	public void remove(ArrayList<Ex26_1_BookInfo> list) {
 		System.out.println("삭제할 도서 이름:");
-		String title2 = sc.nextLine();
+		String title = sc.nextLine();
 		Ex26_1_BookInfo rbook = null;
 		
 		for(Ex26_1_BookInfo s : list) {
-			if(s.getTitle().equals(title2)) {
+			if(s.getTitle().equals(title)) {
 				rbook =s;
+				break;
 			}
 		}
 		if(rbook == null) {
 			throw new Ex26_1_BookNotFoundException("존재하지 않는 도서입니다!");
 		}
 		list.remove(rbook);
+		System.out.println("도서가 삭제되었습니다.");
 	}
 	// remove 메서드
 	// - 삭제할 도서 이름을 입력 받습니다. (문자열)
@@ -45,21 +48,29 @@ public class Ex26_1_Book {
 	// - 리스트에 해당하는 도서 객체를 제거하세요.
 	
 	public void show(ArrayList<Ex26_1_BookInfo> list) {
-			System.out.println(list);
+		System.out.println("===== 전체 도서 목록 =====");
+		for(Ex26_1_BookInfo book : list) {
+			System.out.println(book);
+		}
 	}
 	
 	// show 메서드
 	// - 전체 도서를 출력합니다. (도서 이름, 저자)
 	public void search(ArrayList<Ex26_1_BookInfo> list) {
 		System.out.println("검색할 도서 이름:");
-		String title3 = sc.nextLine();
+		String title = sc.nextLine();
+		Ex26_1_BookInfo rbook = null;
 		for(Ex26_1_BookInfo s : list) {
-			if(!s.getTitle().equals(title3)) {
-				throw new Ex26_1_BookNotFoundException("존재하지 않는 도서입니다!");
+			if(s.getTitle().equals(title)) {
+				rbook =s;
+				break;
 			}
-			System.out.printf(s.getTitle(),s.getAuthor());
 		}
-		
+		if(rbook == null) {
+			throw new Ex26_1_BookNotFoundException("존재하지 않는 도서입니다!");
+		}
+		System.out.println("===== 검색 결과 =====");
+		System.out.println(rbook);
 	}
 	// search 메서드
 	// - 검색할 도서 이름을 입력 받습니다.(문자열)

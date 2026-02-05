@@ -1,15 +1,14 @@
 package kr.co.training;
 
-public abstract class Warlord implements Character{
+public class Warlord implements Character{
 //	<Warlord 클래스, Character 인터페이스를 상속받음>
 //	  1. 워로드는 객체 생성 시 기본 스탯을 갖습니다.
-double ma;
+	double ma;
 	Warlord(CharacterAbility ca){
 		ca.str = 30;
 		ca.dex = 17;
 		ca.knowledge = 10;
 	}
-	boolean ss = true;
 //
 //	  2. 기본 공격 attack 메서드
 //	    * 참고 : 케릭터가 먼저 공격하고, 그 다음 몬스터가 공격을 합니다.
@@ -33,31 +32,42 @@ double ma;
 //	    > 케릭터의 체력과 마력이 70으로 회복됩니다.
 //	    > 경험치가 30 감소합니다.
 
-	
-	public void attack(CharacterAbility ca, MonsterAbility ma) {
-		if(ss) {
-			if(ca.hp > 0 && ca.dex < 6) {
-				System.out.println("마력이 부족해 공격할 수 없습니다.");
-			}else if(ca.hp > 0 && ca.dex >= 6){
-				System.out.printf("몬스터가 %d의 피해를 입었습니다!",ca.str*1.3);
-				this.ma = ma.gethp() - ca.str*1.3;
-				ca.dex -= 6;
-			}else if(ma.gethp() <= 0) {
-				System.out.println("몬스터 사냥을 성공하셨습니다.");
-			}
-			ss = false;
-		}else {
-			if(ca.hp > 0) {
-				System.out.println("몬스터가 공격했습니다.");
-				System.out.printf("캐릭터가 %d의 피해를 입었습니다!", ma.getdamage());
-				ca.hp -= ma.getdamage();
-				}else if(ca.hp<=0) {
-					ca.hp += 70;
-					ca.mp += 70;
-					ca.experience -= 30;
-			}
-			ss = true;
-		}
+	@Override
+	public boolean attack(CharacterAbility ca, MonsterAbility ma) {
+	        // 마력 체크
+	        if(ca.mp < 6) {
+	            System.out.println("마력이 부족해 공격할 수 없습니다.");
+	            return false; // 공격 불가 시 메서드 종료
+	        }
+	        
+	        // 케릭터 공격
+	        double damage = ca.str * 1.3;
+	        System.out.printf("몬스터가 %.1f의 피해를 입었습니다!\n", damage);
+	        ma.hp -= damage;  // 몬스터 체력 감소
+	        ca.mp -= 6;       // 마력 감소
+	        
+	        // 몬스터 처치 확인
+	        if(ma.hp <= 0) {
+	            System.out.println("몬스터 사냥을 성공하셨습니다.");
+	            ca.experience += 13;  // 경험치 증가
+	            ma.hp = 100;
+	            return true; // 몬스터 죽었으면 반격 없음
+	        }
+	        
+	        // 몬스터 공격 차례
+	        System.out.println("몬스터가 공격했습니다!");
+	        System.out.printf("캐릭터가 %d의 피해를 입었습니다!\n", ma.damage);
+	        ca.hp -= ma.damage;  // 케릭터 체력 감소
+	        
+	        // 캐릭터 사망 확인
+	        if(ca.hp <= 0) {
+	            System.out.println("캐릭터가 사망했습니다...");
+	            ca.hp = 70;
+	            ca.mp = 70;
+	            ca.experience -= 30;
+	            System.out.println("캐릭터가 경험치 30을 잃고 부활합니다.");
+	        }
+	        return false;
 	}
 
 //	  3. 힘 스킬 strSkill 메서드
@@ -82,30 +92,42 @@ double ma;
 //	    ------- 몬스터 공격(케릭터 사망 시)
 //	    > 케릭터의 체력과 마력이 70으로 회복됩니다.
 //	    > 경험치가 30 감소합니다.
-	public void strSkill(CharacterAbility ca, MonsterAbility ma) {
-		if(ss) {
-			if(ca.hp > 0 && ca.dex < 15) {
-				System.out.println("마력이 부족해 공격할 수 없습니다.");
-			}else if(ca.hp > 0 && ca.dex >= 15){
-				System.out.printf("몬스터가 %d의 피해를 입었습니다!",ca.str*1.3);
-				this.ma = ma.gethp() - ca.str*1.3;
-				ca.dex -= 6;
-			}else if(ma.gethp() <= 0) {
-				System.out.println("몬스터 사냥을 성공하셨습니다.");
-			}
-			ss = false;
-		}else {
-			if(ca.hp > 0) {
-				System.out.println("몬스터가 공격했습니다.");
-				System.out.printf("캐릭터가 %d의 피해를 입었습니다!", ma.getdamage());
-				ca.hp -= ma.getdamage();
-				}else if(ca.hp<=0) {
-					ca.hp += 70;
-					ca.mp += 70;
-					ca.experience -= 30;
-			}
-			ss = true;
-		}
+	@Override
+	public boolean strSkill(CharacterAbility ca, MonsterAbility ma) {
+	        // 마력 체크
+	        if(ca.mp < 15) {
+	            System.out.println("마력이 부족해 스킬을 사용할 수 없습니다.");
+	            return false; // 공격 불가 시 메서드 종료
+	        }
+	        
+	        // 케릭터 공격
+	        double damage = ca.str * 1.8;
+	        System.out.printf("몬스터가 힘 스킬로 인해%.1f의 피해를 입었습니다!\n", damage);
+	        ma.hp -= damage;  // 몬스터 체력 감소
+	        ca.mp -= 15;       // 마력 감소
+	        
+	        // 몬스터 처치 확인
+	        if(ma.hp <= 0) {
+	            System.out.println("몬스터 사냥을 성공하셨습니다.");
+	            ca.experience += 13;  // 경험치 증가
+	            ma.hp = 100;
+	            return true; // 몬스터 죽었으면 반격 없음
+	        }
+	        
+	        // 몬스터 공격 차례
+	        System.out.println("몬스터가 공격했습니다!");
+	        System.out.printf("캐릭터가 %d의 피해를 입었습니다!\n", ma.damage);
+	        ca.hp -= ma.damage;  // 케릭터 체력 감소
+	        
+	        // 캐릭터 사망 확인
+	        if(ca.hp <= 0) {
+	            System.out.println("캐릭터가 사망했습니다...");
+	            ca.hp = 70;
+	            ca.mp = 70;
+	            ca.experience -= 30;
+	            System.out.println("캐릭터가 경험치 30을 잃고 부활합니다.");
+	        }
+	        return false;
 	}
 	
 //	  4. 민첩 스킬 dexSkill 메서드
@@ -134,30 +156,46 @@ double ma;
 //	    ------- 몬스터 공격(케릭터 사망 시)
 //	    > 케릭터의 체력과 마력이 70으로 회복됩니다.
 //	    > 경험치가 30 감소합니다.
-	public void dexSkill(CharacterAbility ca, MonsterAbility ma) {
-		if(ss) {
-			if(ca.hp > 0 && ca.dex < 15) {
-				System.out.println("마력이 부족해 공격할 수 없습니다.");
-			}else if(ca.hp > 0 && ca.dex >= 15){
-				System.out.printf("몬스터가 %d의 피해를 입었습니다!",ca.str*1.3);
-				this.ma = ma.gethp() - ca.str*1.3;
-				ca.dex -= 6;
-			}else if(ma.gethp() <= 0) {
-				System.out.println("몬스터 사냥을 성공하셨습니다.");
-			}
-			ss = false;
-		}else {
-			if(ca.hp > 0) {
-				System.out.println("몬스터가 공격했습니다.");
-				System.out.printf("캐릭터가 %d의 피해를 입었습니다!", ma.getdamage());
-				ca.hp -= ma.getdamage();
-				}else if(ca.hp<=0) {
-					ca.hp += 70;
-					ca.mp += 70;
-					ca.experience -= 30;
-			}
-			ss = true;
-		}
+	@Override
+	public boolean dexSkill(CharacterAbility ca, MonsterAbility ma) {
+	        // 마력 체크
+	        if(ca.mp < 19) {
+	            System.out.println("마력이 부족해 스킬을 사용할 수 없습니다.");
+	            return false; // 공격 불가 시 메서드 종료
+	        }
+	        
+	        // 케릭터 공격
+	        double damage = ca.dex * 0.7;
+	        System.out.printf("몬스터가 %.1f의 피해를 입었습니다!\n", damage);
+	        ma.hp -= damage;  // 몬스터 체력 감소
+	        System.out.printf("몬스터가 %.1f의 피해를 입었습니다!\n", damage);
+	        ma.hp -= damage;  // 몬스터 체력 감소
+	        System.out.printf("몬스터가 %.1f의 피해를 입었습니다!\n", damage);
+	        ma.hp -= damage;  // 몬스터 체력 감소
+	        ca.mp -= 19;       // 마력 감소
+	        
+	        // 몬스터 처치 확인
+	        if(ma.hp <= 0) {
+	            System.out.println("몬스터 사냥을 성공하셨습니다.");
+	            ca.experience += 13;  // 경험치 증가
+	            ma.hp = 100;
+	            return true; // 몬스터 죽었으면 반격 없음
+	        }
+	        
+	        // 몬스터 공격 차례
+	        System.out.println("몬스터가 공격했습니다!");
+	        System.out.printf("캐릭터가 %d의 피해를 입었습니다!\n", ma.damage);
+	        ca.hp -= ma.damage;  // 케릭터 체력 감소
+	        
+	        // 캐릭터 사망 확인
+	        if(ca.hp <= 0) {
+	            System.out.println("캐릭터가 사망했습니다...");
+	            ca.hp = 70;
+	            ca.mp = 70;
+	            ca.experience -= 30;
+	            System.out.println("캐릭터가 경험치 30을 잃고 부활합니다.");
+	        }
+	        return false;
 	}
 //	  5. 지력 스킬 knowledgeSkill 메서드
 //	    * 참고 : 케릭터가 먼저 공격하고, 그 다음 몬스터가 공격을 합니다.
@@ -181,29 +219,42 @@ double ma;
 //	    ------- 몬스터 공격(케릭터 사망 시)
 //	    > 케릭터의 체력과 마력이 70으로 회복됩니다.
 //	    > 경험치가 30 감소합니다.
-	public void knowledgeSkill(CharacterAbility ca, MonsterAbility ma) {
-		if(ss) {
-			if(ca.hp > 0 && ca.dex < 15) {
-				System.out.println("마력이 부족해 공격할 수 없습니다.");
-			}else if(ca.hp > 0 && ca.dex >= 15){
-				System.out.printf("몬스터가 %d의 피해를 입었습니다!",ca.str*1.3);
-				this.ma = ma.gethp() - ca.str*1.3;
-				ca.dex -= 6;
-			}else if(ma.gethp() <= 0) {
-				System.out.println("몬스터 사냥을 성공하셨습니다.");
-			}
-			ss = false;
-		}else {
-			if(ca.hp > 0) {
-				System.out.println("몬스터가 공격했습니다.");
-				System.out.printf("캐릭터가 %d의 피해를 입었습니다!", ma.getdamage());
-				ca.hp -= ma.getdamage();
-				}else if(ca.hp<=0) {
-					ca.hp += 70;
-					ca.mp += 70;
-					ca.experience -= 30;
-			}
-			ss = true;
-		}
+	@Override
+	public boolean knowledgeSkill(CharacterAbility ca, MonsterAbility ma) {
+	        // 마력 체크
+	        if(ca.mp < 28) {
+	            System.out.println("마력이 부족해 공격할 수 없습니다.");
+	            return false; // 공격 불가 시 메서드 종료
+	        }
+	        
+	        // 케릭터 공격
+	        double damage = ca.knowledge * 3.6;
+	        System.out.printf("몬스터가 %.1f의 피해를 입었습니다!\n", damage);
+	        ma.hp -= damage;  // 몬스터 체력 감소
+	        ca.mp -= 28;       // 마력 감소
+	        
+	        // 몬스터 처치 확인
+	        if(ma.hp <= 0) {
+	            System.out.println("몬스터 사냥을 성공하셨습니다.");
+	            ca.experience += 13;  // 경험치 증가
+	            ma.hp = 100;
+	            return true; // 몬스터 죽었으면 반격 없음
+	        }
+	        
+	        // 몬스터 공격 차례
+	        System.out.println("몬스터가 공격했습니다!");
+	        System.out.printf("캐릭터가 %d의 피해를 입었습니다!\n", ma.damage);
+	        ca.hp -= ma.damage;  // 케릭터 체력 감소
+	        
+	        // 캐릭터 사망 확인
+	        if(ca.hp <= 0) {
+	            System.out.println("캐릭터가 사망했습니다...");
+	            ca.hp = 70;
+	            ca.mp = 70;
+	            ca.experience -= 30;
+	            System.out.println("캐릭터가 경험치 30을 잃고 부활합니다.");
+	        }
+	        return false;
 	}
+
 }

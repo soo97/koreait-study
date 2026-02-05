@@ -23,7 +23,10 @@ public class Ex26_1_BookInfo {
 		return author;
 	}
 
-
+	@Override
+	public String toString() {
+		return "도서명: " + title + ", 저자: " + author;
+	}
 
 
 }

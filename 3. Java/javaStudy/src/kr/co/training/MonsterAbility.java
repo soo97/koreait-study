@@ -7,14 +7,14 @@ public class MonsterAbility {
 //	  2. 체력(hp)
 //	     - 기본값: 100
 //	  3. getter/setter 작성
-	int damage;
-	int hp;
+	int damage = 5;
+	int hp = 100;
 	
-	public void setdamage() {
-		this.damage = 5;
+	public void setdamage(int damage) {
+		this.damage = damage;
 	}
-	public void sethp() {
-		this.hp = 100;
+	public void sethp(int hp) {
+		this.hp = hp;
 	}
 	
 	public int getdamage() {

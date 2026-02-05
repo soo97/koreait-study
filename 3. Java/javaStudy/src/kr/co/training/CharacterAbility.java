@@ -13,18 +13,96 @@ public class CharacterAbility {
 	int hpPortionCount = 10;
 	int mpPortionCount = 10;
 	
-	public void Experienc() {
-		if(this.experience >100) {
-			this.level += 1;
-			this.experience = 0;
-		}
+	// 힘(str)
+	public void setstr(int str) {
+		this.str = str;
 	}
 	
-	public void UnusedStatus() {
-		if(this.level > level) {
-			this.unusedStatus += 5;
-		}
+	public int getstr() {
+		return str;
 	}
+	
+	// 민첩(dex)
+	public void setdex(int dex) {
+		this.dex = dex;
+	}
+	
+	public int getdex() {
+		return dex;
+	}
+	
+	// 지력(knowledge)
+	public void setknowledge(int knowledge) {
+		this.knowledge = knowledge;
+	}
+	
+	public int getknowledge() {
+		return knowledge;
+	}
+	
+	// 레벨(level)
+	public void setlevel(int level) {
+		this.level = level;
+	}
+	
+	public int getlevel() {
+		return level;
+	}
+	
+	// 경험치(experience)
+	public void setexperience(int experience) {
+		this.experience = experience;
+	}
+	
+	public int getexperience() {
+		return experience;
+	}
+	
+	// 체력(hp)
+	public void sethp(int hp) {
+		this.hp = hp;
+	}
+	
+	public int gethp() {
+		return hp;
+	}
+	
+	// 마력(mp)
+	public void setmp(int mp) {
+		this.mp = mp;
+	}
+	
+	public int getmp() {
+		return mp;
+	}
+	
+	// 잔여 스텟(unusedStatus)
+	public void setunusedStatus(int unusedStatus) {
+		this.unusedStatus = unusedStatus;
+	}
+	
+	public int getunusedStatus() {
+		return unusedStatus;
+	}
+	
+	// 소지중인 체력 포션(hpPortionCount)
+	public void sethpPortionCount(int hpPortionCount) {
+		this.hpPortionCount = hpPortionCount;
+	}
+	
+	public int gethpPortionCount() {
+		return hpPortionCount;
+	}
+	
+	// 마력 포션(hpPortionCount)
+	public void setmpPortionCount(int mpPortionCount) {
+		this.mpPortionCount = mpPortionCount;
+	}
+	
+	public int getmpPortionCount() {
+		return mpPortionCount;
+	}
+	
 //	  1. 힘(str), 민첩(dex), 지력(knowledge)
 //	     - 기본값 : 0
 //	  2. 레벨(level)
