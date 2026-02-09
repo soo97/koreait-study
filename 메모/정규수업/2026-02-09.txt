@@ -1,0 +1,15 @@
+오전 9:58 2026-02-09
+
+JSP/Serlvet -> Spring FrameWork -> Spring Boot
+
+kr.co.koreait.controller - 데이터 받는 역할
+sevice - 
+repository -
+
+
+
+gradlew -> refresh
+
+http://localhost:8080/
+
+lombok -run as - java -specify location -
