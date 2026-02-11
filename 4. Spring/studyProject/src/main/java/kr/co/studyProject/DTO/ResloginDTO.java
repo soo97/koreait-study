@@ -1,22 +1,22 @@
 package kr.co.studyProject.DTO;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Data
-public class ReqHomeDTO {
-	private String userName;
+public class ResloginDTO {
+	private Long id;
 	private String userId;
+	private String userName;
 	private String email;
-	private String password;
-	private String passwordCheck;
+	
+	private LocalDateTime createdAt;
+	private LocalDateTime updateAt;
 }

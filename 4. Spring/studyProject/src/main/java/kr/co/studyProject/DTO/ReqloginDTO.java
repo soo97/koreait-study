@@ -1,22 +1,15 @@
 package kr.co.studyProject.DTO;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Data
-public class ReqHomeDTO {
-	private String userName;
-	private String userId;
+public class ReqloginDTO {
 	private String email;
 	private String password;
-	private String passwordCheck;
 }

@@ -1,0 +1,25 @@
+<header th:fragment="global_header">
+<div class="header-inner">
+      <a href="home.html" class="logo">
+        <span class="logo-icon">L</span>
+        학습게시판
+      </a>
+
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav">
+        <a href="home.html">홈</a>
+        <a href="board.html">게시판</a>
+        <a th:if="${session.LOGIN_USER != null}" href="profile.html">내 정보</a>
+        <div class="nav-auth" th:if="${session.LOGIN_USER == null}">
+          <a href="/login" class="btn btn-ghost btn-sm">로그인</a>
+          <a href="/signup" class="btn btn-primary btn-sm active">회원가입</a>
+        </div>
+        <div class="nav-auth" th:if="${session.LOGIN_USER != null}">
+          <a href="/logout" class="btn btn-ghost btn-sm">로그아웃</a>
+        </div>
+      </nav>
+    </div>
+   </header>

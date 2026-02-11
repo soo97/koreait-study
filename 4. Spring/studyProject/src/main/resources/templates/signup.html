@@ -9,28 +9,7 @@
 <body>
 
   <!-- ===== Header ===== -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="home.html" class="logo">
-        <span class="logo-icon">L</span>
-        학습게시판
-      </a>
-
-      <button class="menu-toggle" onclick="toggleMenu()" aria-label="메뉴 열기">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav">
-        <a href="home.html">홈</a>
-        <a href="board.html">게시판</a>
-        <a href="profile.html">내 정보</a>
-        <div class="nav-auth">
-          <a href="login.html" class="btn btn-ghost btn-sm">로그인</a>
-          <a href="signup.html" class="btn btn-primary btn-sm active">회원가입</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <header th:replace="~{fragments/header :: global_header}" class="header"></header>
 
   <!-- ===== Main ===== -->
   <main class="main main--narrow">
@@ -42,13 +21,14 @@
       </div>
 
       <!-- 회원가입 폼 -->
-      <form onsubmit="handleFormSubmit(event, '회원가입이 완료되었습니다! (학습용 알림)', 'login.html')">
+      <form action="/signup" method="POST" onsubmit="handleFormSubmit(event, '회원가입이 완료되었습니다! (학습용 알림)', 'login.html')">
 
         <div class="form-group">
           <label for="name">이름</label>
           <input
             type="text"
             id="name"
+            name="userName"
             class="form-input"
             placeholder="홍길동"
             required
@@ -61,6 +41,7 @@
           <input
             type="email"
             id="email"
+            name="email"
             class="form-input"
             placeholder="example@email.com"
             required
@@ -74,6 +55,7 @@
           <input
             type="text"
             id="nickname"
+            name="userId"
             class="form-input"
             placeholder="사용할 닉네임을 입력하세요"
             required
@@ -86,6 +68,7 @@
           <input
             type="password"
             id="password"
+            name="password"
             class="form-input"
             placeholder="8자 이상 입력하세요"
             required
@@ -99,6 +82,7 @@
           <input
             type="password"
             id="passwordConfirm"
+            name="passwordCheck"
             class="form-input"
             placeholder="비밀번호를 다시 입력하세요"
             required
