@@ -6,7 +6,7 @@ import kr.co.studyProject.DTO.ResloginDTO;
 
 public interface ProjectService {
 	
-	void home(ReqHomeDTO request);
+	void signup(ReqHomeDTO request);
 	
-	ResloginDTO login(ReqloginDTO request);
+	public ResloginDTO login(ReqloginDTO request);
 }

@@ -19,11 +19,11 @@ public class ProjectServiceImpl implements ProjectService{
 	private final BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
-	public void home(ReqHomeDTO request) {
+	public void signup(ReqHomeDTO request) {
 		if(!request.getPassword().equals(request.getPasswordCheck())) {
 			System.out.println("비밀번호가 일치하지 않음");
 		}
-		if(sprepository.existByUserId(request.getUserId())) {
+		if(sprepository.existsByUserId(request.getUserId())) {
 			System.out.println("이미 사용중인 닉네임");
 		}
 		
@@ -45,7 +45,7 @@ public class ProjectServiceImpl implements ProjectService{
 	@Override
 	public ResloginDTO login(ReqloginDTO request) {
 		
-		ProjectEntity pentity = studyProjectRepository.findByemail(request.getEmail().orElse(null));
+		ProjectEntity pentity = sprepository.findByUserId(request.getUserId());
 		if(pentity == null) {
 			return null;
 		}
@@ -56,6 +56,7 @@ public class ProjectServiceImpl implements ProjectService{
 		ResloginDTO response = new ResloginDTO();
 		response.setId(pentity.getId());
 		response.setUserId(pentity.getUserId());
+		response.setEmail(pentity.getEmail());
 		response.setUserName(pentity.getUserName());
 		response.setCreatedAt(pentity.getCreatedAt());
 		response.setUpdateAt(pentity.getUpdateAt());
