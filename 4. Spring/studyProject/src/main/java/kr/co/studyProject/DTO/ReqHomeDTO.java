@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 @Data
 public class ReqHomeDTO {
+	private Long id;
 	private String userName;
 	private String userId;
 	private String email;

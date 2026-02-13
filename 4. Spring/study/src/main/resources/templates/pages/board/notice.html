@@ -20,7 +20,7 @@
                 <div class="post-header">
                     <div>
                         <div class="post-title" th:text="${notice.title}"></div>
-                        <div class="post-content" th:text="${notice.content}"></div>
+                        <div class="post-content" th:utext="${notice.content}"></div>
                     </div>
                     <span class="badge" th:text="${notice.category}"></span>
                 </div>

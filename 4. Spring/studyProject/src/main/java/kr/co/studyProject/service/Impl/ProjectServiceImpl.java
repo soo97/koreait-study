@@ -45,7 +45,7 @@ public class ProjectServiceImpl implements ProjectService{
 	@Override
 	public ResloginDTO login(ReqloginDTO request) {
 		
-		ProjectEntity pentity = sprepository.findByUserId(request.getUserId());
+		ProjectEntity pentity = sprepository.findByEmail(request.getEmail());
 		if(pentity == null) {
 			return null;
 		}
@@ -59,7 +59,7 @@ public class ProjectServiceImpl implements ProjectService{
 		response.setEmail(pentity.getEmail());
 		response.setUserName(pentity.getUserName());
 		response.setCreatedAt(pentity.getCreatedAt());
-		response.setUpdateAt(pentity.getUpdateAt());
+		response.setUpdateAt(pentity.getUpdatedAt());
 		
 		return response;
 	}

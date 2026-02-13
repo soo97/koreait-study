@@ -6,12 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name="members")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,6 +29,11 @@ public class ProjectEntity {
 	private String password;
 	
 	private LocalDateTime createdAt;
-	private LocalDateTime updateAt;
-
+	private LocalDateTime updatedAt;
+	
+	// INSERT 되기 직전에 자동 실행되는 어노테이션
+		@PrePersist
+		public void prePersist() {
+			this.createdAt = LocalDateTime.now();
+		}
 }

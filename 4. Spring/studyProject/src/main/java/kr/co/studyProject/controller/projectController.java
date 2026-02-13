@@ -32,7 +32,7 @@ public class projectController {
 	@PostMapping("/signup")
 	public String home(ReqHomeDTO request) {
 		projectservice.signup(request);
-		return "/login/form";
+		return "redirect:/login/form";
 	}
 	
 	@GetMapping("/login/form")
@@ -53,6 +53,6 @@ public class projectController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/signup";
 	}
 }
