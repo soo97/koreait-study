@@ -1,4 +1,4 @@
-package kr.co.restStduy;
+package kr.co.restStudy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

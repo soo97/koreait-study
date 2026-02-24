@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 연습용 페이지</title>
+</head>
+<body>
+    <!-- 시맨틱 태그 -->
+    <header>
+        <h1>html 연습용 페이지 입니다.</h1>
+        <p>목차별로 태그를 나눠 정리했습니다.</p>
+    </header>
+
+    <!-- 목차 -->
+    <nav>
+        <h2>목차</h2>
+        <ul>
+            <li><a href="#text"> 1)텍스트 요소</a></li>
+            <li><a href="#img-hyper-text"> 2)이미지와 하이퍼링크 요소</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="text">
+            <h2>1)텍스트 요소</h2>
+            <p>텍스트를 표현하거나 의미를 부여하는 태그 종류들</p>
+
+            <!-- &lt;h1&gt; = <h1>-->
+            <h3> &lt;h1&gt;제목</h3>
+            <p>설명 : 제목을 나타내는 태그이며 숫자가 커질수록 중요도 낮음</p>
+
+            <br><br>
+            <h3> &lt;strong&gt; &lt;b&gt; 문자 강조</h3>
+            <p>b 설명 : 중요하거나 강조되어야 하는 내용을 시각적으로만 나타냄</p>
+            <p>차이점 : strong은 스크린 리더 등의 사용자에게 중요한 내용임을 알려줌</p>
+            <strong>strong입니다.</strong>
+            <b>b 입니다.</b>
+            <hr>
+            <h3>&lt;small&gt; 작은 문자</h3>
+            <p> 설명 : 기본 문자보다 작게 표시하는 태그</p>
+            <small>small입니다.</small>
+            <hr>
+            <h3>&lt; u&gt; &lt;s&gt; 밑줄과 취소선</h3>
+            <p>u설명 : 글자에 밑줄을 표시하는 태그</p>
+            <p>s설명 : 글자에 취소선을 표시하는 태그</p>
+            <u>u 태그 입니다.</u>
+            <s>s 태그 입니다.</s>
+            <hr>
+            <h3>&lt;sup&gt; &lt;sub&gt; 첨자</h3>
+            <p>sup설명 : 위 첨자로 나타내는 태그</p>
+            <p>sub설명 : 아래 첨자로 나타내는 태그</p>
+            <sup>sup태그</sup><sub>sub태그</sub>
+        </section>
+        <hr>
+        <section id="img-hyper-text">
+            <h2>2)이미지와 하이퍼링크 요소</h2>
+            <p>이미지와 하이퍼링크를 사용하는 태그 종류</p>
+
+            <h3>&lt;img&gt; 이미지</h3>
+            <p>설명 : 이미지를 보여주는 태그</p>
+            <img src="./11.jpg" alt="상의니트">
+            <hr>
+            <h3>&lt;a&gt; 하이퍼링크 태그</h3>
+            <p>설명 : 다른 웹페이지, 파일, 이메일 주소 등으로 연결하는 링크를 생성하는 태그</p>
+            <a href="https://www.ipmarket.or.kr/idearo/moduidea/index.do">모두의 아이디어로 이동</a>
+
+            <hr>
+            <h3>이미지와 하이퍼링크 같이 사용</h3>
+            <p>설명 : a 요소 안에 img 요소를 넣어서 이미지를 클리하면 이동</p>
+            <a href="https://www.ipmarket.or.kr/idearo/moduidea/index.do"><img src="./11.jpg" alt="상의니트"></a>
+        </section>
+        <section id="list">
+            <h2>3)목록 요소</h2>
+            <p>목록들을 나타내는 요소</p>
+
+            <h3>&lt;ul&gt;&lt;ol&gt;&lt;li&gt;</h3>
+            <p>ul설명 : 순서 없는 목록</p>
+            <p>ol설명 : 순서 있는 목록</p>
+            <p>li설명 : 항목</p>
+
+            <ul>
+                순서 없는 목록
+                <li>항목1</li>
+                <li>항목2</li>
+            </ul>
+
+            <ol type="A">
+                순서 있는 목록
+                <li>항목1</li>
+                <li>항목2</li>
+            </ol>
+
+            <hr>
+
+            <h2>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt; 정의 목록</h2>
+            <p>dl설명:정의 목록 태그</p>
+            <p>dt설명:용어를 나타내는 태그</p>
+            <p>dd설명:설명을 나타내는 태그</p>
+
+            <dl>
+                <dt>용어</dt>
+                <dd>설명 </dd>
+            </dl>
+        </section>
+        <hr>
+        <section id="audio-video">
+            <h3>&lt;audio&gt;&lt;video&gt; 오디오 및 비디오</h3>
+            <p>설명 : 미디어 재생을 위한 태그</p>
+
+            <audio controls>
+                <source src="/test.mp3" type="audio/mpeg">
+            </audio>
+
+            <video controls width="320">
+                <source src="/test.mp4" type="video/mp4">
+            </video>
+        </section>
+        <hr>
+        <section id="table">
+            <h2>테이블 요소</h2>
+            <p>엑셀처럼 테이블을 표현할 수 있는 태그</p>
+
+            <h3>&lt;table&gt;&lt;tr&gt;&lt;th&gt;&lt;td&gt;</h3>
+            <p>table 설명 : 웹 페이지에서 테이블을 만들 때 사용</p>
+            <p>tr설명: 함 개의 행을 만드는 태그1</p>
+            <p>th설명: 행에 데이터를 넣을 때 사용되는 태그 (제목)</p>
+            <p>td설명: 행에 데이터를 넣을 때 사용되는 태그 </p>
+
+            <table border="1">
+                <tr>
+                    <th>목록명</th>
+                    <tbody>
+                        <td>목록1</td>
+                        <td>목록2</td>
+                    </tbody>
+                </tr>
+            </table>
+        </section>
+        <hr>
+        <section id="form-ele">
+            <h2>폼 요소</h2>
+            <p>사용자 입력을 서버로 전송시키는 역할</p>
+
+            <form action="#">
+                <label for="user-name">아이디:</label>
+                <input type="text" id="user-name" placeholder="아이디를 입력하세요." readonly>
+                <br>
+                <label for="user-password">비밀번호:</label>
+                <input type="password" id="user-password" maxlength="8" required>
+                <br>
+                <button type="submit">전송</button>
+                <button type="reset">초기화</button>
+            </form>
+
+            <input type="checkbox">
+            <input type="date">
+            <input type="datetime">
+            <input type="number">
+        </section>
+    </main>
+
+</body>
+</html>
