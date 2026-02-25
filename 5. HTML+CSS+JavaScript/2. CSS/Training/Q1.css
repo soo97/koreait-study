@@ -1,0 +1,36 @@
+h4 {
+    font-size: 20px;
+}
+
+a {
+    font-size: 20px;
+    cursor:wait;
+}
+
+table{
+    background-color: aliceblue;
+    color:black;
+    border-collapse: collapse;
+}
+thead{
+    background-color: #cde7fd;
+}
+th{
+    border:1px solid #000;
+    font-weight: bold;
+}
+td{
+    padding: 5px 10px;
+    text-align: center;
+    border:1px solid #000;
+}
+.tred{
+    color:red;
+}
+.tblue{
+    color:blue;
+}
+
+tfoot{
+    font-weight: bold;
+}
