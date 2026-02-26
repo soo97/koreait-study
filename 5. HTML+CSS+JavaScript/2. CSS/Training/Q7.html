@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 1px;
+            padding:0px;
+        }
+        .container{
+            width: 100%;
+            border-left: 1px solid #eeeeee;
+            border-right: 1px solid #eeeeee;
+        }
+        header{
+            border-radius: 5px 5px 0 0;
+            background-color:#111;
+            color:white;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+            padding: 15px 25px;
+        }
+        a{
+            text-decoration: none;
+            color:white;
+            padding:10px;
+        }
+        .content{
+            margin: 50px;
+        }
+        .content>ul{
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        li{text-align: center;
+            background-color:#f4f4f4;
+            list-style: none;
+            padding:40px 10px;
+            width:30%;
+            margin:10px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="logo">
+            <p>MyCompany</p>
+            <div class="nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </header>
+        <div class="content">
+            <ul>
+                <li>Service 1</li>
+                <li>Service 2</li>
+                <li>Service 3</li>
+                <li>Service 4</li>
+                <li>Service 5</li>
+                <li>Service 6</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

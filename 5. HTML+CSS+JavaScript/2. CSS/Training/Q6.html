@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .hero{
+            height: 100vh;
+            background:linear-gradient(135deg, #4446e5, #3b82f6);
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            color:white;
+            align-items: center;
+        }
+        .title{
+            font-size:40px;
+            font-weight: bold;
+        }
+        .text{
+            margin-bottom: 15px;
+        }
+        .btn{
+            font-size: 15px;
+            color: #3b82f6;
+            background-color: white;
+            width: 80px;
+            padding: 10px 30px;
+            text-align: center;
+            border-radius: 50px;
+        }
+        .btn:hover{
+            background-color: #ddd;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 랜딩 페이지 : 특정 목적을 위해 사용자가 들어오도록 유도하는 페이지
+    히어로: 페이지에서 가장 강조되는 영역
+    히어로 구조: 제목-한줄 설명-cta버튼-(선택)이미지 등
+    cta 버튼: "시작하기","신청하기"등 특정 행동을 유도하는 버튼
+    -->
+    <div class="hero">
+        <p class="title">Build Your Future</p>
+        <p class="text">Start learning today and grow Your career.</p>
+        <p class="btn">Get Started</p>
+    </div>
+</body>
+</html>

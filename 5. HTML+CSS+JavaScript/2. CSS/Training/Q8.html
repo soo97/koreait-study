@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+            font-size: 12px;
+            color:#818181;
+        }
+        footer{
+            display: flex;
+            flex-flow: column;
+            
+        }
+        nav{
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            padding:20px 5px;
+            border-bottom:1px solid #eeeeee;
+        }
+        a{
+            text-decoration: none;
+            color:#0e0e0e;
+        }
+        li{
+            list-style: none;
+        }
+        .root>a{
+            margin:10px 0;
+            padding:0 10px;
+            border-right:1px solid #e9e9e9;
+        }
+        .b{
+            font-weight: bold;
+        }
+        .family{
+            color:#bbbbbb
+        }
+        .family>p{
+            display: inline-block;
+            position:relative;
+            margin-right: 5px;
+        }
+        /* .family:hover>ul{
+            display: block;
+        } */
+        .list{
+            border:1px solid #818181;
+            padding:5px;
+            border-radius: 5px;
+            cursor: pointer;
+            color:#0e0e0e;
+        }
+        .radio{
+            display: none;
+            position:absolute;
+        }
+        .radio>li{
+            background-color: #bbbbbb;
+        }
+        div{
+            padding:10px 10px;
+
+        }
+        .company{
+            display: flex;
+            flex-flow: row;
+            border-bottom: 1px solid #eeeeee;
+        }
+        .company ul li p span{
+            color:#0e0e0e;
+            font-weight: 400;
+        }
+        .haru{
+            padding-right: 10px;
+            width:45%;
+        }
+        .company ul li{
+            margin:10px 0;
+        }
+        .company ul li p a{
+            color:blue;
+        }
+        .box>p{
+            display: inline-block;
+            border:1px solid #bbbbbb;
+            padding:5px 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .tel .b{
+            color:#0e0e0e;
+        }
+        .ftext ul{
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+        }
+
+        .ftext span{
+            margin-left: 10px;
+            text-decoration: underline;
+        }
+        .ftext .b{
+            color:#0e0e0e;
+        }
+        .family .list .b{
+            margin-left: 60px;
+        }
+        .ftext ul li p{
+            padding:5px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <footer>
+        <nav>
+            <div class="root">
+                <a href="#">서비스 소개</a>
+                <a href="#">채용 정보</a>
+                <a href="#">이용약관</a>
+                <a href="#" class="b">개인정보처리방침</a>
+                <a href="#">청소년보호정책</a>
+                <a href="#">전자금융거래약관</a>
+                <a href="#">제휴·광고</a>
+            </div>
+            <div class="family">
+                <p>패밀리 사이트</p>
+                <p class="list">선택하세요  <span class="b">∨</span></p>
+                <ul class="radio">
+                    <li>사이트1</li>
+                    <li>사이트2</li>
+                    <li>사이트3</li>
+                    <li>사이트4</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="company">
+            <ul class="haru">
+                <li class="b">하루드림</li>
+                <li>
+                    <p>주소 : <span>서울특별시 송파구 가락로 84, 7층 705-Q091호(석촌동, 서원빌딩)</span></p>
+                    <p>대표 : <span>김재섭</span></p>
+                    <p>사업자등록번호 : <span>306-36-08063<a href="#">사업자정보확인</a></span></p>
+                </li>
+                <li class="box">
+                    <p>사업자정보 확인</p>
+                    <p>통신판매업 신고</p>
+                    <p>개인정보 보호책임자</p>
+                </li>
+            </ul>
+            <ul class="tel">
+                <li class="b">고객센터</li>
+                <li>
+                    <p class="b">Tel : <span>1500-0000</span></p>
+                    <p class="b">Fax : <span>02-000-0000</span></p>
+                    <p class="b">Mail : <span>help@harudream.com</span></p>
+                    <p>운영시간 : <span>평일 09:00 ~ 18:00 (점심 12:00~13:00)</span></p>
+                    <p>1:1 문의 : <a href="#">문의 접수</a></p>
+                </li>
+            </ul>
+        </div>
+        <div class="ftext">
+            <ul>
+                <li>
+                    <p>하루드림은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 하루드림은 상품·거래 정보 및 가격에 대해 책임을 지지 않습니다.</p>
+                    <p></p>본 사이트의 모든 정보, 콘텐츠, UI등에 대한 무단 복제·전송·배포·스크래핑 행위는 금지됩니다. <span>콘텐츠산업 진흥법에 따른 표시</span></p>
+                    <p></p>Copyright © HaruDream Inc. All rights reserced.</p>
+                </li>
+                <li>
+                    <p class="b">HaruDream</p>
+                    UI Clone Practice
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
