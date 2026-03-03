@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Q1. 사용자의 이름을 입력받고 확인 버튼을 누르면 "ㅇㅇㅇ님 환영합니다."를  alert로 출력</h3>
+    <input type="text" id="txtbox">
+    <button onclick="ok()">확인</button>
+    <hr>
+    <script>
+        function ok(){
+            let txt = document.getElementById("txtbox").value;
+            
+            alert(txt + "님 환영합니다.");
+        }
+    </script>
+
+    <h3>Q2. 구구단 몇단을 출력할지 입력받고 확인 버튼을 누르면 div 태그에 결과 출력</h3>
+    <input type="text" id="textbox">
+    <button onclick="ok1()">확인</button>
+    <div id="gugudan"></div>
+    <hr>
+    <script>
+        function ok1(){
+            let txt1 = perseInt(document.getElementById('textbox').value);
+            let gugudan = document.getElementById('gugudan');
+
+            for(let i=1; i<=9; i++){
+                gugudan.textContent += dan + "x" + i + "=" + txt1*i;
+            }
+
+            // let numbers = [1,2,3,4,5,6,7,8,9];
+
+            // let resultMap = numbers.map((value) => value *= txt1);
+
+            // gugudan.textContent=resultMap;
+        }
+    </script>
+
+    <h3>Q3. 사용자의 이름과 나이를 입력받고 확인 버튼을 누르면 환영 메시지 출력</h3>
+    <p>18세 미만 : "ㅇㅇㅇ님 안녕하세요! 미성년자 분이시군요."</p>
+    <p>18세 이상 : "ㅇㅇㅇ님 안녕하세요! 성인 분이시군요."</p>
+    <p style="color:red" >* 나이에 숫자를 입력하지 않을 경우 "나이를 숫자로 입력하세요." 출력</p>
+    <p style="color:red" >* isNaN()을 찾아서 활용해보기</p>
+    <input type="text" id="year" placeholder="나이를 입력하세요.">
+    <input type="text" id="name2" placeholder="이름을 입력하세요.">
+    <button onclick="ok2()">확인</button>
+    <div id="q3-result"></div>
+    <script>
+        function ok2(){
+            let useryear = document.getElementById('year').value;
+            let username = document.getElementById('name2').value;
+            let q3 = document.getElementById('q3-result');
+
+            if(!useryear){
+                q3.style.color = 'red';
+                q3.textContent = "나이를 숫자로 입력하세요.";
+            }else if(useryear >= 18){
+                q3.textContent = username + "님 안녕하세요! 성인 분이시군요!";
+            }else{
+                
+                q3.textContent = username + "님 안녕하세요! 미성년자 분이시군요.";
+            }
+
+        }
+    </script>
+
+    <h3>Q4. 사용자로부터 숫자 1개를 입력받아 확인 버튼을 누르면 홀수인지 짝수인지 판별하기</h3>
+    <p>짝수라면 "입력한 숫자는 짝수입니다."를 red 색상으로</p>
+    <p>홀수라면 "입력한 숫자는 홀수입니다."를 blue 색상으로</p>
+    <input type="text" id="txtbox3">
+    <button onclick="ok4()">확인</button>
+    <div id="q4-result"></div>
+    <script>
+        function ok4(){
+            let txtb = document.getElementById('txtbox3').value;
+            let q4 = document.getElementById('q4-result');
+
+            if(txtb % 2 === 0){
+                q4.style.color = 'red';
+                q4.textContent = "입력한 숫자는 짝수입니다.";
+            }else{
+                q4.style.color = 'blue';
+                q4.textContent ="입력한 숫자는 홀수입니다.";
+            }
+        }
+    </script>
+
+    <h3>Q5. 사용자로부터 임의의 문자열을 입력받아 길이를 계산하여 출력하고, 역순으로 출력</h3>
+    <p>문자열 역순은 reverse() 찾아서 활용</p>
+    <input type="text" id="txt4">
+    <button onclick="ok6()">확인</button>
+    <div id="q5-length" ></div>
+    <div id="q5-reverse"></div>
+    <script>
+        function ok6(){
+            let text4 = document.getElementById('txt4').value;
+            let length = document.getElementById('q5-length');
+            let reverse = document.getElementById('q5-reverse');
+
+            length.textContent = text4.length;
+            reverse.textContent = str.split("").reverse().join("");
+
+            // console.log(str.split(""));
+            // console.log(str.split("").reverse());
+            // console.log(str.split("").reverse().join(""));
+        }
+    </script>
+</body>
+</html>
