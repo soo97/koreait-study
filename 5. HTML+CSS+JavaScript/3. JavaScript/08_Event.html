@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="click-event-listener">이벤트 리스너 등록하기</button>
+    <span id="msg"></span>
+
+    <script>
+        const btn = document.getElementById('click-event-listener');
+        const msg = document.getElementById('msg');
+        
+        // click : 그냥 클릭 / dblclick : 더블 클릭
+        btn.addEventListener('dblclick', function(){
+            msg.textContent = '버튼이 클릭됨';
+        })
+    </script>
+
+    <hr>
+    <button onclick="click1()" id="btn1">버튼을 클릭해주세요.</button>
+    <div id="textbox"></div>
+
+    <script>
+        const btn2 = document.getElementById('btn1');
+        const txtb = document.getElementById('textbox');
+        let togl = false;
+
+        btn1.addEventListener('click', function(){
+
+            if(!togl){
+                btn2.textContent = "클릭되었습니다.";
+                txtb.textContent = "버튼이 클릭되었습니다.";
+            }else{
+                btn2.textContent = "취소되었습니다.";
+                txtb.textContent = "버튼이 취소되었습니다.";
+            }
+            togl = !togl;
+        })
+        
+        // function click1(){
+        //     let texbox = document.getElementById('textbox');
+        //     let btn2 = document.getElementById('btn1');
+        //     let togl = false;
+
+        //     if(!togl){
+        //         btn2.textContent ="클릭되었습니다.";
+        //         textbox.textContent = "버튼이 클릭되었습니다.";
+        //     }else{
+        //         btn2.textContent = "취소되었습니다.";
+        //         textbox.textContent = "버튼이 취소 되었습니다.";
+        //     }
+        //     togl = !togl;
+        // }
+    </script>
+
+    <div id="contextmenu-div" style="width:300px; height:300px; background-color: aquamarine;">
+        안녕하세요
+    </div>
+
+    <script>
+        const contexmenuDiv = document.getElementById('contextmenu-div');
+
+        contexmenuDiv.addEventListener('contextmenu', function(){
+            console.log('우클릭됨');
+            event.preventDefault();
+        })
+
+        contexmenuDiv.addEventListener('selectstart', function(){
+            event.preventDefault();
+        })
+    </script>
+
+    <img src="" alt="" id="change-img" width="300px" height="300px">
+    <script>
+        const changeImg = document.getElementById('change-img');
+
+        changeImg.addEventListener('mouseover', function(){
+            changeImg.src='./gfh.jpg';
+        })
+
+        //요소에서 마우스가 벗어났을때
+        changeImg.addEventListener('mouseout', function(){
+            changeImg.src = './dgd.jpg';
+        })
+    </script>
+
+    <hr>
+    <!-- <input type="text" id="keyboard-input" onkeyup="keyboardFunc()"> -->
+    <!-- <input type="text" id="keyboard-input" onkeydown="keyboardFunc(event)"> -->
+    <input type="text" id="keyboard-input" oninput="keyboardFunc(event)">
+    <button id="search-btn" onclick="clickFunc()">검색</button>
+    <script>
+        function clickFunc(){
+            console.log("클릭됨");
+        }
+        function keyboardFunc(event){
+            console.log("이벤트 발생함");
+            console.log(event.keyCode);
+
+            if(event.keyCode === 13){ // 13번 = 엔터
+                const btn = document.getElementById('search-btn');
+                btn.click(); //클릭 이벤트 발생시키기
+            }
+        }
+
+    </script>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
