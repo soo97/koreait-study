@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let scores = [84, 45, 26, 72, 55];
+
+        // scores 배열에서 각각의 요소에 2를 곱한 리스트 반환
+        let doubledScores = scores.map((score) => scores * 2);
+
+        //scores 배열에서 70점을 초과하는 요소만 리스트 반환
+        let passScores = scores.filter((score) => score > 70);
+
+        // scores 배열에서 모든 점수의 합계 반환
+        let sumScores = scores.reduce((total, score) => total + score, 0);
+
+        let students = [
+            {
+                name:"홍길동",
+                score: 70
+            },
+            {
+                name:"짱구",
+                score: 9
+            },
+            {
+                name: "철수",
+                score :97
+            }
+        ]
+
+        let topStudents = students.filter((student) => student.score >= 70);
+        console.log(topStudents);
+
+        // students 배열에서 성적의 합계 구하기 (reduce)
+        let sumStudents = students.reduce((total, student) => total + student.score, 0);
+        console.log(sumStudents);
+
+        // students 배열에서 각각의 요소(score)에 5점 추가하여 반환
+        let plusStudents = students.map((student) => student.score + 5);
+        console.log(plusStudents);
+    </script>
+</body>
+</html>
