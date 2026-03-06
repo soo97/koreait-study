@@ -5,3 +5,5 @@ cd 4.react-project/
 npm audit fix --force
 npm install react-router-dom localforage match-sorter sort-by
 npm run dev
+
+npm run build
