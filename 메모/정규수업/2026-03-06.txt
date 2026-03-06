@@ -1,0 +1,7 @@
+오후 3:36 2026-03-06
+
+npm create vite@latest 4.react-project -- --template react
+cd 4.react-project/
+npm audit fix --force
+npm install react-router-dom localforage match-sorter sort-by
+npm run dev
