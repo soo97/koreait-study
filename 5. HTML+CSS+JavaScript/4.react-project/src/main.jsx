@@ -10,6 +10,19 @@ import Path from './pages/04_Path.jsx'
 import Extension from './pages/05_Extension.jsx'
 import Props from './pages/06_Props.jsx'
 import Rendering from './pages/07_Rendering.jsx'
+import ListRendering from './pages/08_ListRendering.jsx'
+import EventHandler from './pages/09_EventHandler.jsx'
+import ProfilePage from './pages/Training/Q1_ProfilePage.jsx'
+import ButtonPage from './pages/Training/Q2_ButtonPage.jsx'
+import LoginPage from './pages/Training/Q3_LoginPage.jsx'
+import FruitPage from './pages/Training/Q4_FruitPage.jsx'
+import EvenPage from './pages/Training/Q5_EvenPage.jsx'
+import MenuPage from './pages/Training/Q6_MenuPage.jsx'
+import MessagePage from './pages/Training/Q7_MessagePage.jsx'
+import Status from './pages/10_Status.jsx'
+import UseState from './pages/11_UseState.jsx'
+import FormHandling from './pages/12_FormHandling.jsx'
+import Lifting from './pages/13_Lifting.jsx'
 
 import{
   createBrowserRouter, RouterProvider
@@ -43,6 +56,58 @@ const router = createBrowserRouter([
   {
     path: "/07",
     element: <Rendering/>
+  },
+  {
+    path: "/08",
+    element: <ListRendering/>
+  },
+  {
+    path: "/09",
+    element: <EventHandler/>
+  },
+  {
+    path: "/Q1",
+    element: <ProfilePage/>
+  },
+  {
+    path: "/Q2",
+    element: <ButtonPage/>
+  },
+  {
+    path: "/Q3",
+    element: <LoginPage/>
+  },
+  {
+    path: "/Q4",
+    element: <FruitPage/>
+  },
+  {
+    path: "/Q5",
+    element: <EvenPage/>
+  },
+  {
+    path: "/Q6",
+    element: <MenuPage/>
+  },
+  {
+    path: "/Q7",
+    element: <MessagePage/>
+  },
+  {
+    path: "/10",
+    element: <Status/>
+  },
+  {
+    path:"/11",
+    element: <UseState/>
+  },
+  {
+    path: "/12",
+    element: <FormHandling/>
+  },
+  {
+    path: "/13",
+    element: <Lifting/>
   }
 ])
 // ---------------
