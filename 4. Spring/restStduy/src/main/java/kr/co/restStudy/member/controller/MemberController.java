@@ -1,9 +1,11 @@
 package kr.co.restStudy.member.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +19,7 @@ import kr.co.restStudy.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/api/member")
 @RequiredArgsConstructor
 @Tag(name="Member", description="회원 API")
 public class MemberController {
@@ -27,7 +29,7 @@ public class MemberController {
 
 	@PostMapping("/register")
 	@Operation(summary="회원 등록", description ="신규 회원을 등록합니다.")
-	public ResponseEntity<String> register(ReqRegisterDTO request) {
+	public ResponseEntity<String> register(@RequestBody ReqRegisterDTO request) {
 		memberService.register(request);
 
 		return new ResponseEntity<String>("OK", HttpStatus.OK);
@@ -35,7 +37,7 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	@Operation(summary="로그인", description ="사용자 로그인")
-	public ResponseEntity<String> login(ReqLoginDTO request, HttpSession session) {
+	public ResponseEntity<String> login(@RequestBody ReqLoginDTO request, HttpSession session) {
 		ResLoginDTO response = memberService.login(request);
 		
 		if(response == null) {
@@ -53,5 +55,16 @@ public class MemberController {
 		
 		session.invalidate(); // 세션 무효화
 		return new ResponseEntity<String>("OK", HttpStatus.OK);
+	}
+	
+	@GetMapping("/check")
+	@Operation(summary="로그인 확인", description="회원이 로그인 상태인지 확인합니다.")
+	public ResponseEntity<ResLoginDTO> loginCheck(HttpSession session) {
+		ResLoginDTO loginUser = (ResLoginDTO) session.getAttribute("LOGIN_USER");
+		
+		if(loginUser == null) {
+			return new ResponseEntity<ResLoginDTO>(loginUser, HttpStatus.UNAUTHORIZED);
+		}
+		return new ResponseEntity<ResLoginDTO>(loginUser, HttpStatus.OK);
 	}
 }
