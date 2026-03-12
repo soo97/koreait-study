@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx'
 import Register from './pages/register.jsx';
 import Login from './pages/Login.jsx';
+import NoticeList from './pages/NoticeList.jsx';
+import NoticeDetail from './pages/NoticeDetail.jsx';
 
 function App() {
 
@@ -11,6 +13,8 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/Login" element={<Login/>} />
+        <Route path="/noticeList" element={<NoticeList/>} />
+        <Route path="/notice/detail/:id" element={<NoticeDetail/>} />
       </Routes>
     </Router>
   )
