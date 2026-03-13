@@ -4,6 +4,7 @@ import useUserStore from "../store/userStore";
 import { useState } from "react";
 
 export const useNoticeDetailHook = () => {
+
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     // 경로파라미터 가져오기
@@ -32,6 +33,7 @@ export const useNoticeDetailHook = () => {
 
     // 수정 페이지로 이동
     const goToEdit = () => {
+
         if(postId) navigate(`/notice/edit/${postId}`)
     }
 
@@ -55,12 +57,9 @@ export const useNoticeDetailHook = () => {
         //      > 함수명 noticeDeleteApi
         //      > URI: /api/board/{post}
         //      > Method : DELETE
-        if(data.writerName === currentUser.userName){
             alert("게시글이 삭제되었습니다.");
             closeDeleteModal();
             goToList(); // 리스트 페이지로 이동
-        }
-        return false;
     }
 
     return { data, postId, isLoading, isError, error, isWriterCheck, currentUser, goToList, goToEdit, deletePost, closeDeleteModal, confirmDelete, showDeleteModal };

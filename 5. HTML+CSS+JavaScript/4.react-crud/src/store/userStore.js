@@ -6,7 +6,7 @@ const useUserStore = create((set) => ({
     setCurrentUser: (userData) => {
         set({ currentUser: userData });
     },
-    logout: () => set({ currentUser: null })
+    logout: () => set({ currentUser: null }),
 }))
 
 export default useUserStore;

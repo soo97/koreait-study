@@ -4,6 +4,7 @@ import Register from './pages/register.jsx';
 import Login from './pages/Login.jsx';
 import NoticeList from './pages/NoticeList.jsx';
 import NoticeDetail from './pages/NoticeDetail.jsx';
+import NoticeEdit from './pages/NoticeEdit.jsx';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Login" element={<Login/>} />
         <Route path="/noticeList" element={<NoticeList/>} />
         <Route path="/notice/detail/:id" element={<NoticeDetail/>} />
+        <Route path="/notice/edit/:id" element={<NoticeEdit/>} />
       </Routes>
     </Router>
   )

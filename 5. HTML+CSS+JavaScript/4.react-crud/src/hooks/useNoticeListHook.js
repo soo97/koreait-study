@@ -84,6 +84,10 @@ export const useNoticeListHook = () => {
         navigate(`/notice/detail/${postId}`);
     }
 
+    const goToWrite = (formData) => {
+        navigate();
+    }
+
     return { noticeList, currentPage, totalPages, isLoading, isError, error,
-        handlePageChange, goToFirstPage, goToPrevPage, goToLastPage, goToNextPage, pageNumbers, goToDetail};
+        handlePageChange, goToFirstPage, goToPrevPage, goToLastPage, goToNextPage, pageNumbers, goToDetail, goToWrite};
 }

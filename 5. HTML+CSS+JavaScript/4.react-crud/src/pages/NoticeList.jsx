@@ -7,7 +7,7 @@ import useUserStore from "../store/userStore";
 // - components: 재사용이 필요한 UI(ex.Header)
 function NoticeList() {
     const { noticeList, currentPage, totalPages, isLoading, isError, error,
-        handlePageChange, goToFirstPage, goToPrevPage, goToLastPage, goToNextPage, pageNumbers, goToDetail } = useNoticeListHook();
+        handlePageChange, goToFirstPage, goToPrevPage, goToLastPage, goToNextPage, pageNumbers, goToDetail, } = useNoticeListHook();
 
     // 로그인 상태 가져오기
     // 이름을 바꿀 수 있음 {key: 내가쓸변수명}
@@ -96,12 +96,12 @@ function NoticeList() {
                     {/* 글쓰기 버튼 추가 */}
                     {isLogin &&
                         <a
-                            href="announcement-write.html"
-                            className="btn btn-primary"
-                            style={{ textDecoration: "none" }}
-                        >
-                            글쓰기
-                        </a>
+                                href="announcement-write.html"
+                                className="btn btn-primary"
+                                style={{ textDecoration: "none" }}
+                            >
+                                글쓰기
+                            </a>
                     }
                 </div>
 

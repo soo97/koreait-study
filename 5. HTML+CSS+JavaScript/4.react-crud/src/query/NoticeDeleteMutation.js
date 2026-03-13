@@ -1,11 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
 
-export const useNoticeDeleteMutation () {
+export const useNoticeDeleteMutation = () => {
 
     return useMutation({
                 mutationFn: boardApi,
                 onSuccess: (data) => { // 성공 시 실행
-                    
                     alert("삭제되었습니다.");
                     navigate('/'); 
                 },
