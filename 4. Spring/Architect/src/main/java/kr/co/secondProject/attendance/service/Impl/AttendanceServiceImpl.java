@@ -1,0 +1,164 @@
+package kr.co.secondProject.attendance.service.Impl;
+
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+
+import kr.co.secondProject.attendance.dto.AttendanceStatsDto;
+import kr.co.secondProject.attendance.dto.ReqAttendanceDTO;
+import kr.co.secondProject.attendance.dto.ResAttendanceDTO;
+import kr.co.secondProject.attendance.sevice.AttendanceService;
+import kr.co.secondProject.login.entity.Attendance;
+import kr.co.secondProject.login.entity.Employee;
+import kr.co.secondProject.login.repository.AttendanceRepository;
+import kr.co.secondProject.login.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
+
+/**
+ * ※ 추가 어노테이션 설명:
+ *  - @Service : 스프링 빈 등록 (서비스 계층 명시)
+ *  - @Async   : 비동기 처리 (CompletableFuture 반환 메서드에 사용)
+ *               → AsyncConfig 클래스에서 @EnableAsync 설정 필요 (별도 파일 제공)
+ */
+@Service
+@RequiredArgsConstructor
+public class AttendanceServiceImpl implements AttendanceService {
+
+    private final AttendanceRepository attendanceRepository;
+    private final EmployeeRepository   employeeRepository;
+
+    // ────────────────────────────────────────────────────────────────────────
+    // 근태 이력 전체 조회 (비동기)
+    // ────────────────────────────────────────────────────────────────────────
+    @Async
+    @Override
+    public CompletableFuture<List<ResAttendanceDTO>> getAttendanceList(Long employeeId) {
+
+        List<Attendance> list = attendanceRepository.findByEmployeeId(employeeId);
+
+        List<ResAttendanceDTO> result = list.stream()
+							                .map(this::toResDto)
+							                .collect(Collectors.toList());
+
+        return CompletableFuture.completedFuture(result);
+    }
+
+    // ────────────────────────────────────────────────────────────────────────
+    // 이번 달 근태 통계 조회 (비동기)
+    //  - 출근 일수 : state = "정상" 또는 "지각"
+    //  - 지각 횟수 : state = "지각"
+    //  - 결근 일수 : state = "결근"
+    //  - 근태 점수 : (출근 일수 / 이번 달 총 일수) × 100
+    // ────────────────────────────────────────────────────────────────────────
+    @Async
+    @Override
+    public CompletableFuture<AttendanceStatsDto> getAttendanceStats(Long employeeId) {
+
+        LocalDateTime startOfMonth = YearMonth.now().atDay(1).atStartOfDay();
+        LocalDateTime endOfMonth   = YearMonth.now().atEndOfMonth().atTime(23, 59, 59);
+
+        List<Attendance> monthList = attendanceRepository
+                .findByEmployeeIdAndDateBetween(employeeId, startOfMonth, endOfMonth);
+
+        int workDays = (int) monthList.stream()
+                .filter(a -> "정상".equals(a.getState()) || "지각".equals(a.getState()))
+                .count();
+
+        int lateDays = (int) monthList.stream()
+                .filter(a -> "지각".equals(a.getState()))
+                .count();
+
+        int absentDays = (int) monthList.stream()
+                .filter(a -> "결근".equals(a.getState()))
+                .count();
+
+        int    totalDays = YearMonth.now().lengthOfMonth();
+        double score     = totalDays == 0
+                ? 0
+                : Math.round((workDays / (double) totalDays) * 1000.0) / 10.0;
+
+        return CompletableFuture.completedFuture(
+                new AttendanceStatsDto(workDays, lateDays, absentDays, score));
+    }
+
+    // ────────────────────────────────────────────────────────────────────────
+    // 출근 등록 (비동기)
+    // ────────────────────────────────────────────────────────────────────────
+    @Async
+    @Override
+    public CompletableFuture<ResAttendanceDTO> checkIn(ReqAttendanceDTO reqDto) {
+
+        Employee employee = employeeRepository.findById(reqDto.getEmployeeId())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "직원을 찾을 수 없습니다. ID: " + reqDto.getEmployeeId()));
+
+        Attendance attendance = new Attendance();
+        attendance.setEmployee(employee);
+        attendance.setDate(reqDto.getDate());
+        attendance.setStartTime(reqDto.getStartTime());
+        attendance.setState("출근중");  // 퇴근 전 임시 상태
+
+        Attendance saved = attendanceRepository.save(attendance);
+        return CompletableFuture.completedFuture(toResDto(saved));
+    }
+
+    // ────────────────────────────────────────────────────────────────────────
+    // 퇴근 등록 (비동기)
+    //  - 퇴근 시간 저장 후 근무시간 및 근태 상태 자동 계산
+    //  - 지각 기준: 출근 시각 09:00 초과 → "지각", 이하 → "정상"
+    // ────────────────────────────────────────────────────────────────────────
+    @Async
+    @Override
+    public CompletableFuture<ResAttendanceDTO> checkOut(Long attendanceId, ReqAttendanceDTO reqDto) {
+
+        Attendance attendance = attendanceRepository.findById(attendanceId)
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "근태 기록을 찾을 수 없습니다. ID: " + attendanceId));
+
+        attendance.setEndTime(reqDto.getEndTime());
+
+        // 근무 시간 계산
+        if (attendance.getStartTime() != null && reqDto.getEndTime() != null) {
+            Duration duration = Duration.between(attendance.getStartTime(), reqDto.getEndTime());
+            long hours   = duration.toHours();
+            long minutes = duration.toMinutesPart();
+            attendance.setAllTime(hours + "시간 " + minutes + "분");
+        }
+
+        // 지각 여부 판단 (기준 시간 변경 시 아래 atTime 수정)
+        if (attendance.getStartTime() != null) {
+            LocalDateTime standardTime = attendance.getDate().toLocalDate().atTime(9, 0);
+            attendance.setState(
+                    attendance.getStartTime().isAfter(standardTime) ? "지각" : "정상");
+        }
+
+        Attendance saved = attendanceRepository.save(attendance);
+        return CompletableFuture.completedFuture(toResDto(saved));
+    }
+
+    // ────────────────────────────────────────────────────────────────────────
+    // Entity → ResAttendanceDTO 변환
+    // ────────────────────────────────────────────────────────────────────────
+    private ResAttendanceDTO toResDto(Attendance attendance) {
+        ResAttendanceDTO dto = new ResAttendanceDTO();
+        dto.setAttendanceId(attendance.getAttendanceId());
+        dto.setDate(attendance.getDate());
+        dto.setStartTime(attendance.getStartTime());
+        dto.setEndTime(attendance.getEndTime());
+        dto.setAllTime(attendance.getAllTime());
+        dto.setState(attendance.getState());
+
+        if (attendance.getEmployee() != null) {
+            dto.setEmployeeId(attendance.getEmployee().getId());
+            dto.setEmployeeName(attendance.getEmployee().getName());
+        }
+        return dto;
+    }
+}

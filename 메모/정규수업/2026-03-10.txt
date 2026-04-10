@@ -1,9 +1,0 @@
-Java, Spring Boot, Thmeleaf
-
-html, css, JavaScript, React(react-router, Zustand, Tanstack Query, Axios)
-
-클라우드(AWS) + 서버리스
-컨테이너(Docker, k8s)
-CI/CD (Git Actions, ArgoCD)
-
-ai(Python, FastAPI, TensorFlow/ONNX, ChangChain)

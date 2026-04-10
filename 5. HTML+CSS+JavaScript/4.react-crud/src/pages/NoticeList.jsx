@@ -7,7 +7,7 @@ import useUserStore from "../store/userStore";
 // - components: 재사용이 필요한 UI(ex.Header)
 function NoticeList() {
     const { noticeList, currentPage, totalPages, isLoading, isError, error,
-        handlePageChange, goToFirstPage, goToPrevPage, goToLastPage, goToNextPage, pageNumbers, goToDetail, } = useNoticeListHook();
+        handlePageChange, goToFirstPage, goToPrevPage, goToLastPage, goToNextPage, pageNumbers, goToDetail, goToWrite } = useNoticeListHook();
 
     // 로그인 상태 가져오기
     // 이름을 바꿀 수 있음 {key: 내가쓸변수명}
